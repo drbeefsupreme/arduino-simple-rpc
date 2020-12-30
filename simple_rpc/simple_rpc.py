@@ -125,6 +125,7 @@ class Interface(object):
         for index, line in enumerate(
                 until(lambda x: x == b'', self._read_byte_string)):
             method = parse_line(index, line)
+            method['name'] = method['name'].replace('.','_')
             methods[method['name']] = method
 
         return methods
